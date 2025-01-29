@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, Button } from "react-native-web";
+import { View, Text, TextInput, Button, Alert } from "react-native-web";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -9,7 +9,7 @@ const Login = () => {
     try {
       const response = await fetch("https://dummyjson.com/auth/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           username: username,
           password: password,
@@ -17,15 +17,19 @@ const Login = () => {
         credentials: "omit",
       });
       const data = await response.json();
-      console.log(data);
+      if (data?.accessToken) {
+        navigation.navigate("Welcome", { 
+          username: username 
+        });
+      }
     } catch (error) {
-      console.error("Login error:", error);
+      Alert.alert("Error", "An error occurred while logging in");
     }
   };
 
   return (
     <View>
-      <Text >Welcome to Fake API Call</Text>
+      <Text>Welcome to Fake API Call</Text>
       <TextInput
         placeholder="Username"
         autoCapitalize="none"
