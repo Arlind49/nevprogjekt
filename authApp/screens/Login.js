@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View>
-      <Text>Welcome to Fake API Call</Text>
+      <Text>Welcome to Arlind Selimi bo diqka</Text>
       <TextInput
         placeholder="Username"
         autoCapitalize="none"
