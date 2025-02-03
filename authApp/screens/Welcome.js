@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Button } from '@react-navigation/elements';
 
-const Welcome = ({ route }) => {
+const Welcome = ({ route ,navigation}) => {
     const { username } = route.params || {};  // Ensure `route` is destructured
     const handleB = ()=>{
         
@@ -15,7 +15,7 @@ const Welcome = ({ route }) => {
                 Welcome{username ? `, ${username}` : ""}
             </Text>
             <Text>This is the second screen where ......</Text>
-            <Button title="Preke" onPress={() => props.navigation.navigate("QyshDush.js")} />
+            <Button title="Preke" onPress={() => navigation.navigate("QyshDush")} />
 
         </View>
     );
